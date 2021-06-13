@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Halaman2">
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/Image2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="170dp"
+                    android:src="@drawable/user" />
+
+                <TextView
+                    android:id="@+id/nama"
+                    android:textSize="25sp"
+                    android:layout_below="@id/Image2"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="130dp"
+                    android:text="Username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/telepon2"
+                    android:layout_below="@id/nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="No Telepon" />
+
+                <TextView
+                    android:id="@+id/telepon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/telepon2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Pesan" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+                    android:layout_below="@id/telepon"
+                    android:layout_marginTop="450dp"
+                    android:layout_marginLeft="350dp"
+                    android:id="@+id/Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_call_24" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
