@@ -1,39 +1,34 @@
 package com.example.paskontakview;
-
-import android.widget.TextView;
-
 public class Data{
-    private String nama;
-    private String pesan;
-    private Integer gambar;
-
-    public Data(String nama, String pesan, Integer gambar) {
-        this.nama = nama;
-        this.pesan = pesan;
+    private String judul, bahasa;
+    private String gambar;
+    public Data(String judul, String bahasa, String gambar) {
+        this.judul = judul;
+        this.bahasa = bahasa;
         this.gambar = gambar;
     }
 
-    public String getNama() {
-        return nama;
+    public String getJudul() {
+        return judul;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setJudul(String judul) {
+        this.judul = judul;
     }
 
-    public String getPesan() {
-        return pesan;
+    public String getBahasa() {
+        return bahasa;
     }
 
-    public void setPesan(String pesan) {
-        this.pesan = pesan;
+    public void setBahasa(String bahasa) {
+        this.bahasa = bahasa;
     }
 
-    public Integer getGambar() {
+    public String getGambar() {
         return gambar;
     }
 
-    public void setGambar(Integer gambar) {
+    public void setGambar(String gambar) {
         this.gambar = gambar;
     }
 }
