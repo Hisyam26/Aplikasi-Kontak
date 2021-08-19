@@ -52,7 +52,7 @@ public void getDataApi(){
                                 JSONObject object = results.getJSONObject(i);
                                  data.add(new Data(object.getString("strLeague"),
                                          object.getString("strDescriptionEN"),
-                                         object.getString("strFanart1")));
+                                         object.getString("strBadge")));
                             }
                             recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                             Adapter adapter = new Adapter(data, getApplicationContext(), new Adapter.Callback() {
