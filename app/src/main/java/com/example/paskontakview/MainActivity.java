@@ -3,20 +3,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ShareActionProvider;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.androidnetworking.model.Progress;
-import com.androidnetworking.utils.Utils;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +18,7 @@ import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<Data> data;
+    ArrayList<Model> data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         AndroidNetworking.initialize(getApplicationContext());
         getDataApi();
-
     }
 public void getDataApi(){
     AndroidNetworking.get("https://www.thesportsdb.com/api/v1/json/1/search_all_leagues.php?c=England")
@@ -50,32 +42,34 @@ public void getDataApi(){
                             JSONArray results = response.getJSONArray("countrys");
                             for (int i = 0; i < results.length(); i++) {
                                 JSONObject object = results.getJSONObject(i);
-                                 data.add(new Data(object.getString("strLeague"),
-                                         object.getString("strDescriptionEN"),
-                                         object.getString("strBadge")));
+                                 data.add(new Model(object.getString("strLeague"),
+                                         object.getString("strCurrentSeason"),
+                                         object.getString("strBadge"),
+                                         object.getString("strDescriptionEN")));
                             }
                             recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                            Adapter adapter = new Adapter(data, getApplicationContext(), new Adapter.Callback() {
+
+                            adapter adapter = new adapter(data, new com.example.paskontakview.adapter.Callback() {
                                 @Override
-                                public void onClick(int position) {
-                                    Data Operator = data.get(position);
-                                    Intent move = new Intent(getApplicationContext(),Halaman2.class);
+                                public void halo(int position) {
+                                    Model Operator = data.get(position);
+                                    Intent move = new Intent(getApplicationContext(), Detail.class);
+                                    move.putExtra("desk", Operator.getDeskripsi());
                                     move.putExtra("nama", Operator.getJudul());
-                                    move.putExtra("pesan", Operator.getBahasa());
                                     move.putExtra("gambar", Operator.getGambar());
                                     startActivity(move);
                                 }
                             });
-                            recyclerView.setAdapter(adapter);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
 
-                    }
+                            recyclerView.setAdapter(adapter);
+                           } catch (JSONException e) {
+                                 e.printStackTrace();
+                         }
+                      }
                 }@Override
                 public void onError(ANError error) {
                     Log.d(TAG, "onError: " + error);
                 }
             });
-}
+   }
 }

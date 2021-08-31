@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+ <item
+     android:icon="@drawable/favorite"
+     app:showAsAction="always"
+     android:id="@+id/favorite"
+     android:title="favorite"/>
+  <item
+      android:id="@+id/kembali"
+      android:title="kembali"
+      app:showAsAction="never"/>
+</menu>
